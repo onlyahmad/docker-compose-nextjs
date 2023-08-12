@@ -1,0 +1,21 @@
+version: "3"
+services:
+ frontend:
+  build:
+    context: .
+    dockerfile: dev.Dockerfile
+  container_name: nextjs
+  volumes:
+    - .:/app
+    - /app/node_modules
+    - /app/.next
+  ports:
+    - 3000:3000
+  networks:
+    - mynet
+  restart: always
+
+networks:
+  mynet:
+    name: mynet
+    driver: bridge
